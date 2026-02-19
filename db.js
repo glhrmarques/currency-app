@@ -14,10 +14,9 @@ const PORT = 4040;
 
 app.use(express.static(__dirname));
 
-app.get('/currencies', async (req,res) => {
+app.get('/currencies/ars', async (req,res) => {
 
-    const arsPeso = "ars"
-    const url = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${arsPeso}.json`
+    const url = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/ars.json`
 
     try {
 
