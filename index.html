@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fica quanto?</title>
+  </head>
+  <body>
+    <input
+            type="number"
+            id="ARSamount"
+            placeholder="0.00"
+            min="0"
+            step="any"
+            value="1"
+    />
+    <input
+            type="number"
+            id="BRLamount"
+            placeholder="0.00"
+            min="0"
+            step="any"
+    />
+
+    <script>
+
+        const ARSamount = document.querySelector("#ARSamount");
+        const BRLamount = document.querySelector("#BRLamount");
+
+        async function convert() {
+
+            const amount = parseFloat(ARSamount.value);
+
+            if(!amount || amount <= 0) {
+                BRLamount.value = "";
+                return;
+            }
+
+            try {
+
+                const res = await fetch("/currencies");
+                const data = await res.json();
+                const rate = data.ars.brl;
+
+                const result = amount * rate;
+
+                BRLamount.value = result.toFixed(2);
+
+            } catch(error) {
+                console.error(error)
+            }
+
+        };
+
+        convert()
+
+        ARSamount.addEventListener("input", convert);
+
+    </script>
+
+  </body>
+</html>

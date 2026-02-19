@@ -1,11 +1,18 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import axios from 'axios';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config()
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = 4040;
+
+app.use(express.static(__dirname));
 
 app.get('/currencies', async (req,res) => {
 
@@ -15,18 +22,13 @@ app.get('/currencies', async (req,res) => {
     try {
 
         const response = await axios.get(url);
-        const rate = response.data.ars.brl;
-
-        const amountInARS = 12000;
-        const amountInBRL = amountInARS * rate;
-
-        console.log(amountInBRL.toFixed(2));
-        res.json(response.data)
+        res.json(response.data);
 
     } catch (error) {
         console.error(error)
-    }
+        res.status(500).json({ error: "Failed to fetch currency data" });
 
+    }
 })
 
 app.listen(PORT, console.log(`Server is running in http://localhost:${PORT}`));
