@@ -2,7 +2,7 @@ const oneCurrency = document.querySelector("#actualCurrency");
 
 async function currentCurrency() {
 
-    const res = await fetch('/currencies/brl');
+    const res = await fetch('https://currency-app-hq7u.onrender.com/currencies/brl');
     const data = await res.json();
     const rate = data.brl.ars;
 
