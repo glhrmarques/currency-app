@@ -1,14 +1,15 @@
 const ARSamount = document.querySelector("#ARSamount");
 const BRLamount = document.querySelector("#BRLamount");
 
-const cleaveARS = new Cleave('#ARSamount', {
+let cleaveARS;
+cleaveARS = new Cleave('#ARSamount', {
     numeral: true,
     numeralThousandsGroupStyle: 'thousand',
     numeralDecimalMark: ',',
     delimiter: '.',
     numeralDecimalScale: 2,
     onValueChanged: function () {
-      convertARS();
+      if (cleaveARS) convertARS();
     }
 });
 
@@ -21,7 +22,7 @@ async function convertARS() {
     }
 
     try {
-        const res = await fetch("/currencies/ars");
+        const res = await fetch("https://currency-app-backend.onrender.com/currencies/ars");
         const data = await res.json();
         const rate = data.ars.brl;
 
@@ -37,14 +38,15 @@ async function convertARS() {
 }
 
 // BRL to ARS
-const cleaveBRL = new Cleave('#BRLamount', {
+let cleaveBRL;
+cleaveBRL = new Cleave('#BRLamount', {
     numeral: true,
     numeralThousandsGroupStyle: 'thousand',
     numeralDecimalMark: ',',
     delimiter: '.',
     numeralDecimalScale: 2,
     onValueChanged: function () {
-        convertBRL();
+        if (cleaveBRL) convertBRL();
     }
 });
 
@@ -58,7 +60,7 @@ async function convertBRL() {
 
   try {
 
-    const res = await fetch('/currencies/brl');
+    const res = await fetch('https://currency-app-backend.onrender.com/currencies/brl');
     const data = await res.json();
     const rate = data.brl.ars;
 
