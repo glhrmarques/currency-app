@@ -4,25 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fica quanto?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tokens.css">
     <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <input
-            type="text"
-            id="ARSamount"
-            placeholder="0"
-            value="1"
-            inputmode="numeric"
-    />
-    <input
-            type="text"
-            id="BRLamount"
-            placeholder="0,00"
-            inputmode="numeric"
-    />
+  <body class="bg-[var(--color-background-100)] flex flex-col font-['Open_Sans',sans-serif]" style="min-height: 100vh; min-height: 100dvh;">
 
-    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+    <!-- Top section: title + ARS -->
+    <header class="bg-[var(--color-background-200)] flex flex-col gap-6 items-center justify-end px-8 pt-16 pb-6">
+      <p class="text-[var(--color-content-secondary)] text-xs text-center w-full">Taxa de câmbio comercial</p>
+      <div class="flex items-center justify-between w-full">
+        <div class="flex gap-2 items-center p-2 shrink-0">
+          <span class="text-2xl">🇦🇷</span>
+          <span class="text-[var(--color-content-secondary)] text-sm font-semibold">ARS</span>
+        </div>
+        <input
+          type="text"
+          id="ARSamount"
+          placeholder="0,00"
+          value="1"
+          inputmode="numeric"
+          class="bg-transparent placeholder:text-[var(--color-content-primary)] text-[var(--color-content-primary)] text-[64px] font-bold text-right w-full outline-none leading-none"
+        />
+      </div>
+    </header>
+
+    <!-- Bottom section: BRL card + empty state -->
+    <main class="flex flex-col flex-1 gap-10 px-4 py-2.5 overflow-hidden">
+      <div class="bg-[var(--color-background-200)] flex items-center justify-between px-4 py-6 rounded-[32px] w-full">
+        <div class="flex gap-2 items-center p-2 shrink-0">
+          <span class="text-2xl">🇧🇷</span>
+          <span class="text-[var(--color-content-secondary)] text-sm font-semibold">BRL</span>
+        </div>
+        <input
+          type="text"
+          id="BRLamount"
+          placeholder="0,00"
+          inputmode="numeric"
+          class="bg-transparent placeholder:text-[var(--color-content-primary)] text-[var(--color-content-primary)] text-[56px] font-bold text-right w-full outline-none leading-none"
+        />
+      </div>
+
+      <div class="flex flex-col flex-1 items-center pt-16 text-center">
+        <p class="text-base text-[var(--color-content-primary)] font-bold">Sem gastos registrados</p>
+        <p class="text-base text-[var(--color-content-primary)] mt-3">Nenhuma gasto ainda foi registrado</p>
+        <p class="text-base text-[var(--color-content-primary)] mt-3" id="actualCurrency"></p>
+
+      </div>
+    </main>
+
     <script src="conversion.js"></script>
+    <script src="actualCurrency.js"></script>
 
   </body>
 </html>
