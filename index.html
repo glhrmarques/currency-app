@@ -33,11 +33,11 @@
             delimiter: '.',
             numeralDecimalScale: 0,
             onValueChanged: function () {
-                convert();
+              convertARS();
             }
         });
 
-        async function convert() {
+        async function convertARS() {
             const amount = parseFloat(cleaveARS.getRawValue());
 
             if (!amount || amount <= 0) {
@@ -52,7 +52,7 @@
 
                 const result = amount * rate;
 
-                BRLamount.value = result.toLocaleString("pt-BR", {
+                BRLamount.value = result.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 });
@@ -61,7 +61,49 @@
             }
         }
 
-        convert();
+        convertARS();
+
+        // BRL to ARS
+
+        const cleaveBRL = new Cleave('#BRLamount', {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+            numeralDecimalMark: ',',
+            delimiter: '.',
+            numeralDecimalScale: 0,
+            onValueChanged: function () {
+                convertBRL();
+            }
+        });
+
+        async function convertBRL() {
+          const amount = parseFloat(cleaveBRL.getRawValue());
+
+          if(!amount || amount <= 0) {
+            ARSamount.value = "";
+            return
+          }
+
+          try {
+
+            const res = await fetch('/currencies/brl');
+            const data = await res.json();
+            const rate = data.brl.ars;
+
+            const result = amount * rate; 
+
+            ARSamount.value = result.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+          } catch(error) {
+            console.error(error)
+          }
+
+        };
+
+        convertBRL()
 
     </script>
 

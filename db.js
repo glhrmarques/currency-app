@@ -25,8 +25,23 @@ app.get('/currencies/ars', async (req,res) => {
 
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: "Failed to fetch currency data" });
+        res.status(500).json({ error: "Failed to fetch ARS currency data" });
 
+    }
+});
+
+app.get('/currencies/brl', async (req,res) => {
+
+    const url = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/brl.json`
+    
+    try {
+
+        const response = await axios.get(url);
+        res.json(response.data);
+
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({error: "Failed to fetch BRL currency data"})
     }
 })
 
