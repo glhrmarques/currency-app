@@ -6,7 +6,7 @@ const cleaveARS = new Cleave('#ARSamount', {
     numeralThousandsGroupStyle: 'thousand',
     numeralDecimalMark: ',',
     delimiter: '.',
-    numeralDecimalScale: 0,
+    numeralDecimalScale: 2,
     onValueChanged: function () {
       convertARS();
     }
@@ -27,7 +27,7 @@ async function convertARS() {
 
         const result = amount * rate;
 
-        BRLamount.value = result.toLocaleString(undefined, {
+        BRLamount.value = result.toLocaleString("pt-br", {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
@@ -42,7 +42,7 @@ const cleaveBRL = new Cleave('#BRLamount', {
     numeralThousandsGroupStyle: 'thousand',
     numeralDecimalMark: ',',
     delimiter: '.',
-    numeralDecimalScale: 0,
+    numeralDecimalScale: 2,
     onValueChanged: function () {
         convertBRL();
     }
@@ -64,7 +64,7 @@ async function convertBRL() {
 
     const result = amount * rate; 
 
-    ARSamount.value = result.toLocaleString(undefined, {
+    ARSamount.value = result.toLocaleString("pt-br", {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
