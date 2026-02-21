@@ -23,8 +23,7 @@ async function convertARS() {
 
     try {
         const res = await fetch("https://currency-app-backend.onrender.com/currencies/ars");
-        const data = await res.json();
-        const rate = data.ars.brl;
+        const rate = await res.json();
 
         const result = amount * rate;
 
@@ -61,8 +60,7 @@ async function convertBRL() {
   try {
 
     const res = await fetch('https://currency-app-backend.onrender.com/currencies/brl');
-    const data = await res.json();
-    const rate = data.brl.ars;
+    const rate = await res.json();
 
     const result = amount * rate; 
 
