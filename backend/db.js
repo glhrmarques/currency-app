@@ -39,7 +39,8 @@ app.get('/currencies/brl', async (req,res) => {
     try {
 
         const response = await axios.get(url);
-        res.json(response.data);
+        res.json(response.data.brl.ars)
+        console.log(response.data.brl.ars);
 
     } catch(error) {
         console.log(error);
