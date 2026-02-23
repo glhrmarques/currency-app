@@ -1,5 +1,6 @@
 const ARSamount = document.querySelector("#ARSamount");
 const BRLamount = document.querySelector("#BRLamount");
+const submitButton = document.querySelector("#submitButton");
 
 let cleaveARS;
 cleaveARS = new Cleave('#ARSamount', {
@@ -74,6 +75,24 @@ async function convertBRL() {
   }
 
 };
+
+//button
+submitButton.addEventListener("click", async function(e) {
+  e.preventDefault();
+
+  try {
+    const response = await fetch('/send-value', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ arsSubmit: ARSamount.value })
+    });
+
+  } catch(error) {
+    console.error('submit button error', error);
+  }
+});
 
 convertARS();
 convertBRL()
