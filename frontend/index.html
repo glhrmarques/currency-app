@@ -54,7 +54,7 @@
         />
       </label>
 
-      <a href="registerValue.html" class="py-5 bg-[var(--color-content-primary)] w-full rounded-[24px] text-[16px] font-bold text-[var(--color-content-quartenary)] cursor-pointer block text-center">Submit value</a>
+      <a href="#" onclick="goToRegister(event)" class="py-5 bg-[var(--color-content-primary)] w-full rounded-[24px] text-[16px] font-bold text-[var(--color-content-quartenary)] cursor-pointer block text-center">Registrar valor</a>
 
       <div class="flex flex-col flex-1 items-center pt-16 text-center">
         <p class="text-base text-[var(--color-content-primary)] font-bold">Sem gastos registrados</p>
@@ -64,6 +64,15 @@
 
     <script src="conversion.js"></script>
     <script src="actualCurrency.js"></script>
+    <script>
+      function goToRegister(e) {
+        e.preventDefault()
+
+        const ars = document.getElementById('ARSamount').value; 
+        const brl = document.getElementById('BRLamount').value;
+        window.location.href = `registerValue.html?ars=${encodeURIComponent(ars)}&brl=${encodeURIComponent(brl)}`;
+      }
+    </script>
 
   </body>
 </html>

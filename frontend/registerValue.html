@@ -60,10 +60,19 @@
         </main>
 
         <div class="px-4 pb-6 pt-4">
-            <button id="nextPage" class="py-5 bg-[var(--color-content-primary)] w-full rounded-[24px] text-[16px] font-bold text-[var(--color-content-quartenary)] cursor-pointer">Submit value</button>
+            <button id="submitButton" class="py-5 bg-[var(--color-content-primary)] w-full rounded-[24px] text-[16px] font-bold text-[var(--color-content-quartenary)] cursor-pointer">Confirmar valor</button>
         </div>
 
         <script src="conversion.js"></script>
         <script src="actualCurrency.js"></script>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const ars = params.get('ars');
+            const brl = params.get('brl');
+            if (ars) document.getElementById('ARSamount').value = ars;
+            if (brl) document.getElementById('BRLamount').value = brl;
+            
+        </script>
     </body>
 </html>
