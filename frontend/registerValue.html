@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fica quanto?</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="tokens.css">
+        <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <meta name="theme-color" content="#383838" />
+    </head>
+    <body class="bg-[var(--color-background-100)] flex flex-col gap-8" style="min-height: 100vh; min-height: 100dvh;">
+        <header class="flex flex-col gap-4 px-4 pt-[32px]">
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+            </a>
+            <h1 class="text-[32px] font-bold">Registrar valor</h1>
+        </header>
+        <main class="flex flex-col flex-1 gap-10 px-4 py-2.5 overflow-hidden">
+            <div class="flex flex-col flex-1 gap-1">
+                <label for="ARSamount" class="bg-[var(--color-background-200)] flex items-center justify-between px-4 py-6 rounded-[32px] w-full cursor-pointer">
+                    <div class="flex gap-2 items-center p-2 shrink-0">
+                      <img src="icons/flag-argentina.svg" alt="Argentina" class="w-10 h-8">
+                      <span class="text-[var(--color-content-secondary)] text-base font-semibold">ARS</span>
+                    </div>
+                    <input
+                      type="text"
+                      id="ARSamount"
+                      placeholder="0,00"
+                      inputmode="numeric"
+                      class="bg-transparent placeholder:text-[var(--color-content-primary)] text-[var(--color-content-primary)] text-[48px] font-bold text-right w-full outline-none leading-none"
+                    />
+                </label>
+
+                <div class="relative px-4">
+                    <div class="absolute left-6 -top-5 z-10 inline-flex items-center gap-2 px-3 py-2.5 rounded-full bg-[var(--color-background-100)] text-[16px] text-[var(--color-content-primary)] font-bold">
+                      <span id="actualCurrency">Thinking...</span>
+                    </div>
+                </div>
+
+                <label for="BRLamount" class="bg-[var(--color-background-200)] flex items-center justify-between px-4 py-6 rounded-[32px] w-full cursor-pointer">
+                    <div class="flex gap-2 items-center p-2 shrink-0">
+                      <img src="icons/flag-brazil.svg" alt="Brazil" class="w-10 h-8">
+                      <span class="text-[var(--color-content-secondary)] text-base font-semibold">BRL</span>
+                    </div>
+                    <input
+                      type="text"
+                      id="BRLamount"
+                      placeholder="0,00"
+                      inputmode="numeric"
+                      class="bg-transparent placeholder:text-[var(--color-content-primary)] text-[var(--color-content-primary)] text-[48px] font-bold text-right w-full outline-none leading-none"
+                    />
+                </label>
+            </div>
+        </main>
+
+        <div class="px-4 pb-6 pt-4">
+            <button id="nextPage" class="py-5 bg-[var(--color-content-primary)] w-full rounded-[24px] text-[16px] font-bold text-[var(--color-content-quartenary)] cursor-pointer">Submit value</button>
+        </div>
+
+        <script src="conversion.js"></script>
+        <script src="actualCurrency.js"></script>
+    </body>
+</html>
