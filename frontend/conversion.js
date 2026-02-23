@@ -1,6 +1,7 @@
 const ARSamount = document.querySelector("#ARSamount");
 const BRLamount = document.querySelector("#BRLamount");
 const submitButton = document.querySelector("#submitButton");
+const oneCurrency = document.querySelector("#actualCurrency");
 
 let cleaveARS;
 cleaveARS = new Cleave('#ARSamount', {
@@ -86,7 +87,7 @@ submitButton.addEventListener("click", async function(e) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ arsSubmit: ARSamount.value })
+      body: JSON.stringify({ arsSubmit: ARSamount.value, ptlSubmit: BRLamount.value, arsCurrency: oneCurrency.textContent })
     });
 
   } catch(error) {

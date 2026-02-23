@@ -34,12 +34,12 @@ const router = Router();
 
 router.post('/send-value', async (req,res) => {
     
-    const { arsSubmit } = req.body; 
+    const { arsSubmit, ptlSubmit, arsCurrency } = req.body; 
 
     try {
 
         const { data, error } = await supabase.from('customer_purchases').insert([
-            {ars_value: arsSubmit}
+            {ars_value: arsSubmit, brl_value: ptlSubmit, ars_currency: arsCurrency}
         ]);
 
         if (error) {
@@ -48,6 +48,7 @@ router.post('/send-value', async (req,res) => {
         }
 
         console.log('data sent', data);
+        res.json(data)
 
     } catch (err) {
         console.error(err)

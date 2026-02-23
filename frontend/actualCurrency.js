@@ -1,5 +1,3 @@
-const oneCurrency = document.querySelector("#actualCurrency");
-
 async function currentCurrency() {
 
     const res = await fetch('https://currency-app-backend.onrender.com/currencies/brl');
