@@ -102,7 +102,8 @@ submitButton.addEventListener("click", async function(e) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ arsSubmit: ARSamount.value, ptlSubmit: BRLamount.value, arsCurrency: oneCurrency.textContent })
+      body: JSON.stringify({ arsSubmit: ARSamount.value, ptlSubmit: BRLamount.value, arsCurrency: oneCurrency.textContent }),
+      keepalive: true
     });
 
     window.location.href = 'loading.html';
