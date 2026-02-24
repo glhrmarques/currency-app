@@ -5,6 +5,7 @@ async function currentCurrency() {
 
     const oneCurrency = document.querySelector("#actualCurrency");
     const amount = 1;
+    window.oneCurrencyRate = rate;
 
     const result = (amount * rate).toLocaleString("pt-br", {
         minimumFractionDigits: 2,

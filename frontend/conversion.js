@@ -3,6 +3,12 @@ const BRLamount = document.querySelector("#BRLamount");
 const submitButton = document.querySelector("#submitButton");
 const oneCurrency = document.querySelector("#actualCurrency");
 
+function toggleSubmitButton() {
+    const arsValue = parseFloat(cleaveARS.getRawValue()) || 0;
+    const rate = window.oneCurrencyRate || 0;
+    submitButton.classList.toggle('hidden', arsValue <= rate);
+}
+
 let cleaveARS;
 cleaveARS = new Cleave('#ARSamount', {
     numeral: true,
@@ -11,7 +17,10 @@ cleaveARS = new Cleave('#ARSamount', {
     delimiter: '.',
     numeralDecimalScale: 2,
     onValueChanged: function () {
-      if (cleaveARS) convertARS();
+      if (cleaveARS) {
+        convertARS();
+        toggleSubmitButton();
+      }
     }
 });
 
@@ -47,7 +56,10 @@ cleaveBRL = new Cleave('#BRLamount', {
     delimiter: '.',
     numeralDecimalScale: 2,
     onValueChanged: function () {
-        if (cleaveBRL) convertBRL();
+        if (cleaveBRL) {
+            convertBRL();
+            toggleSubmitButton();
+        }
     }
 });
 
