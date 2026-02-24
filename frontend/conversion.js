@@ -6,7 +6,10 @@ const oneCurrency = document.querySelector("#actualCurrency");
 function toggleSubmitButton() {
     const arsValue = parseFloat(cleaveARS.getRawValue()) || 0;
     const rate = window.oneCurrencyRate || 0;
-    submitButton.classList.toggle('hidden', arsValue <= rate);
+    const hasValue = arsValue > 0;
+
+    submitButton.classList.toggle('hidden', !hasValue);
+    submitButton.disabled = arsValue <= rate;
 }
 
 let cleaveARS;
