@@ -1,9 +1,12 @@
 :root {
 
-    --color-content-primary: #315133;
-    --color-content-secondary: #191919;
-    --color-content-tertiary: #727272;
-    --color-content-quartenary: #ffffff;
+
+    --color-brand-primary: #256B29;
+    --color-brand-secondary: #112F13;
+
+    --color-content-primary: #3F3F3F;
+    --color-content-secondary: #B8C1B8;
+    --color-content-tertiary: #fff;
 
     --color-background-100: #FFFFFF;
     --color-background-200: #E3E6E3;
