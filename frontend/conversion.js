@@ -104,6 +104,7 @@ submitButton.addEventListener("click", async function(e) {
       },
       body: JSON.stringify({ arsSubmit: ARSamount.value, ptlSubmit: BRLamount.value, arsCurrency: oneCurrency.textContent }),
       keepalive: true
+      //for ios
     });
 
     window.location.href = 'loading.html';
