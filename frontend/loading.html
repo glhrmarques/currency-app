@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Fica quanto?</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="tokens.css">
+            <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+            <meta name="theme-color" content="#383838" />
+            <style>
+                @keyframes revealTopDown {
+                    0% {
+                        clip-path: inset(0 0 100% 0);
+                    }
+                    100% {
+                        clip-path: inset(0 0 0 0);
+                    }
+                }
+                .bg-reveal {
+                    animation: revealTopDown 0.4s ease-in 0.3s forwards;
+                    clip-path: inset(0 0 100% 0);
+                }
+            </style>
+        </head>
+        <body class="items-center justify-center bg-white" style="min-height: 100vh; min-height: 100dvh;">
+
+            <div class="bg-reveal fixed inset-0" style="background-image: url('src/currency-background.avif'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+
+            <div class="text-slide fixed bottom-0 left-0 right-0 flex flex-col gap-1 px-4 pb-32" style="transform: translateY(100%); opacity: 0;">
+                <div class="mb-6 spinner w-6 h-6 rounded-[3px] bg-[var(--color-content-quartenary)]"></div>
+                <p class="text-[56px] text-[var(--color-content-quartenary)] font-black italic leading-none">Enviando</p>
+                <p class="text-[56px] text-[var(--color-content-quartenary)] font-black italic leading-none">Valor</p>
+            </div>
+
+            <script>
+                document.querySelector('.bg-reveal').addEventListener('animationend', () => {
+                    anime({
+                        targets: '.text-slide',
+                        translateY: ['100%', 0],
+                        opacity: [0, 1],
+                        duration: 600,
+                        easing: 'easeOutExpo',
+                        complete: function() {
+                            anime({
+                                targets: '.spinner',
+                                translateX: [0, window.innerWidth - 72],
+                                rotate: 270,
+                                duration: 2000,
+                                easing: 'easeInOutQuad',
+                                direction: 'alternate',
+                                loop: true,
+                            });
+                        }
+                    });
+                });
+            </script>
+
+        </body>
