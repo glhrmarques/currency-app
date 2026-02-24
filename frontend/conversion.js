@@ -102,6 +102,7 @@ submitButton.addEventListener("click", async function(e) {
       body: JSON.stringify({ arsSubmit: ARSamount.value, ptlSubmit: BRLamount.value, arsCurrency: oneCurrency.textContent })
     });
 
+    window.location.href = 'loading.html';
   } catch(error) {
     console.error('submit button error', error);
   }

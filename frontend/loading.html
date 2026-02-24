@@ -27,7 +27,7 @@
                 }
             </style>
         </head>
-        <body class="items-center justify-center bg-white" style="min-height: 100vh; min-height: 100dvh;">
+        <body class="items-center justify-center" style="min-height: 100vh; min-height: 100dvh; background: transparent;">
 
             <div class="bg-reveal fixed inset-0" style="background-image: url('src/currency-background.avif'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
 
@@ -50,7 +50,7 @@
                                 targets: '.spinner',
                                 translateX: [0, window.innerWidth - 72],
                                 rotate: 270,
-                                duration: 2000,
+                                duration: 1000,
                                 easing: 'easeInOutQuad',
                                 direction: 'alternate',
                                 loop: true,
@@ -58,6 +58,12 @@
                         }
                     });
                 });
+            </script>
+
+            <script>
+                setTimeout(function() {
+                    window.location.href = 'registerConcluded.html';
+                }, 3000);
             </script>
 
         </body>
