@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Fica quanto?</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="tokens.css">
+            <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+            <meta name="theme-color" content="#383838" />
+            <style>
+                #glass {
+
+                    width: 234px;
+                    aspect-ratio: 2;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 24px;
+                    backdrop-filter: blur(10px);
+                    position: relative;
+
+                    &:before{
+                        position:absolute;
+                        content:'';
+                        inset:0;
+                        border-radius: inherit;
+                        z-index: -1;
+                        background: linear-gradient(to top right,
+                                        #fff 0%,
+                                        transparent 52%,
+                                        #fff 100%);
+                        mask: linear-gradient(#fff 0 0) content-box,
+                                linear-gradient(#fff 0 0);
+                        mask-composite: exclude; 
+                        padding: 2px;
+                        
+                    }
+                }
+
+            </style>
+        </head>
+        <body class="items-center justify-center" style="min-height: 100vh; min-height: 100dvh;">
+
+            <div class="fixed inset-0" style="background-image: url('src/currency-background.avif'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+
+            <div class="fixed inset-0 flex items-center justify-center" style="bottom: 40dvh;">
+                <div id="glass" class="pt-6 pb-6 flex flex-col items-center justify-center">
+                    <img src="src/bag-icon.png" alt="" class="w-[100px] h-[100px] object-cover">
+                </div>
+            </div>
+
+            <div class="bottom-sheet fixed bottom-0 left-0 right-0 bg-white rounded-t-[32px] flex flex-col items-center justify-between px-4 pt-8 pb-6" style="height: 40dvh; transform: translateY(100%);">
+                <div class="flex flex-1 items-center justify-center w-full">
+                    <p class="text-[var(--color-content-secondary)] text-[32px] font-semibold">Valor registrado</p>
+                </div>
+                <a href="index.html" class="bg-[#256b29] w-full h-14 flex items-center justify-center rounded-2xl text-white text-base font-bold no-underline">
+                    Ir para início
+                </a>
+            </div>
+
+            <script>
+                anime({
+                    targets: '.bottom-sheet',
+                    translateY: ['100%', 0],
+                    duration: 600,
+                    easing: 'easeOutExpo',
+                    delay: 300,
+                });
+            </script>
+
+        </body>
